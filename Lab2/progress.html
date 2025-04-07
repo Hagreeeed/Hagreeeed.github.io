@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прогрес</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-section">
+                <a href="index.html" class="logo">
+                    <img src="logo.png" alt="Логотип сайту">
+                </a>
+                <h1>Мої цілі</h1>
+            
+            </div>
+            
+    
+        
+    
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Мої цілі</a></li>
+                    <li><a href="progress.html">Прогрес</a></li>
+                    <li><a href="community.html">Спільнота</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="btn-login">Увійти</button>
+                <button class="btn-signup">Зареєструватися</button>
+            </div>
+
+        
+            <button class="burger" aria-label="Відкрити меню">
+                ☰
+             </button>
+            
+    
+            <div class="floating-buttons">
+                <button class="floating-button">+</button>
+                <button class="floating-button">⚙</button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="progress-section">
+            <h2>Візуалізація досягнень</h2>
+            
+            <div class="progress-charts">
+                <div class="chart">
+                    <div class="circle" id="goals-progress" style="--percent: 0%">
+                        <span>0%</span>
+                    </div>
+                    <p>Виконано цілей</p>
+                </div>
+                <div class="chart">
+                    <div class="circle" id="subgoals-progress" style="--percent: 0%">
+                        <span>0%</span>
+                    </div>
+                    <p>Виконано підцілей</p>
+                </div>
+            </div>
+
+            <div class="achievements">
+                <h3>Мої нагороди</h3>
+                <ul>
+                    <li>🏆 Виконано 10 цілей</li>
+                    <li>🎖️ Перша ціль досягнута</li>
+                    <li>⭐ Активний користувач тижня</li>
+                </ul>
+            </div>
+
+            <div class="progress-history">
+                <h3>Історія прогресу</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Дата</th>
+                            <th>Ціль</th>
+                            <th>Статус</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01.10.2025</td>
+                            <td>Тренування</td>
+                            <td>✅ Виконано</td>
+                        </tr>
+                        <tr>
+                            <td>05.10.2025</td>
+                            <td>Читання книги</td>
+                            <td>✅ Виконано</td>
+                        </tr>
+                        <tr>
+                            <td>10.10.2025</td>
+                            <td>Вивчення мови</td>
+                            <td>⏳ В процесі</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Мої цілі</h3>
+                <p>Ми працюємо для вашого майбутнього. Разом до великих перемог!</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Контакти</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> м. Київ, вул. Прикладна, 123</li>
+                    <li><i class="fas fa-phone"></i> +380 12 345 67 89</li>
+                    <li><i class="fas fa-envelope"></i> info@moitsili.com</li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Швидкі посилання</h3>
+                <ul>
+                    <li><a href="#">Головна</a></li>
+                    <li><a href="#">Про нас</a></li>
+                    <li><a href="#">Послуги</a></li>
+                    <li><a href="#">Контакти</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Соціальні мережі</h3>
+                <div class="social-links">
+                    <a href="#"><img src="facebook.png" alt="Facebook"></a>
+                    <a href="#"><img src="instagram.png" alt="Instagram"></a>
+                    <a href="#"><img src="linkedin.png" alt="LinkedIn"></a>
+                    <a href="#"><img src="youtube.png" alt="YouTube"></a>
+                </div>
+                <div class="newsletter">
+                    <input type="email" placeholder="Ваш email">
+                    <button>Підписатись</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Мої цілі. Усі права захищені. | <a href="#">Політика конфіденційності</a> | <a href="#">Умови використання</a></p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        const burger = document.querySelector('.burger');
+        const navMenu = document.querySelector('.nav-menu');
+    
+        burger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
+
+    
+</body>
+</html>
