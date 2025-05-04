@@ -1,0 +1,1493 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+    margin: 0;
+    padding: 0;
+    font-family: "Exo 2", sans-serif;
+    text-align: center;
+    background:#dedede;
+    color: #333;
+
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+}
+
+header {
+    background-color: rgb(62 100 106);
+    color: white;
+    padding: 10px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+nav ul li a.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    font-weight: bold;
+}
+
+.header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-login, .btn-signup {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-login:hover, .btn-signup:hover {
+    background-color: white;
+    color: rgb(62 100 106);
+}
+
+.btn-signup {
+    background-color: white;
+    color: black;
+    border: none;
+}
+
+.btn-signup:hover {
+    background-color: #f0f0f0;
+}
+
+.burger {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 8px 20px;
+}
+
+
+.goals-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Три картки в ряд */
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+.goal-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.goal-card.completed {
+    background-color: #e8f5e9; /* Зміна кольору для виконаних карток */
+    border: 2px solid #4CAF50;
+}
+
+.goal-card.completed .goal-content h3 {
+    color: #4CAF50; /* Зміна кольору заголовка */
+}
+
+.goal-card.completed .goal-content p {
+    color: #666; /* Зміна кольору тексту */
+}
+
+.goal-card.completed .deadline span {
+    color: #4CAF50; /* Зміна кольору дедлайну */
+}
+
+.goal-card.completed .subgoal label {
+    text-decoration: line-through; /* Перекреслений текст для виконаних підцілей */
+    color: #888;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.goal-card:nth-child(1) { animation-delay: 0.2s; }
+.goal-card:nth-child(2) { animation-delay: 0.4s; }
+.goal-card:nth-child(3) { animation-delay: 0.6s; }
+
+
+.goal-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.goal-image {
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.goal-content {
+    padding: 20px;
+    flex: 1; /* Щоб контент займав весь вільний простір */
+}
+
+.goal-card h3 {
+    margin: 0 0 10px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.goal-card p {
+    margin: 0 0 15px;
+    font-size: 1rem;
+    color: #666;
+}
+
+.deadline {
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: #ff6b6b; /* Червоний колір для дедлайну */
+}
+
+.subgoals {
+    margin-top: 10px;
+}
+
+.subgoal {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.subgoal input[type="checkbox"] {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.subgoal label {
+    font-size: 0.9rem;
+    color: #555;
+    cursor: pointer;
+}
+
+.subgoal input[type="checkbox"]:checked + label {
+    text-decoration: line-through;
+    color: #888;
+}
+
+h1 {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeInDown 0.5s ease-out forwards;
+}
+
+@keyframes fadeInDown {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.site-footer {
+    color: #fff;
+    padding: 50px 0 0;
+    font-family: 'Exo 2', sans-serif;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    
+}
+
+.footer-section h3 {
+    color: #fff;
+    font-size: 18px;
+    margin-bottom: 20px;
+    position: left;
+    padding-bottom: 10px;
+    position: relative;
+    text-align: left;
+}
+
+.footer-section h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 2px;
+    background: rgb(62 100 106);
+}
+
+.footer-section p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: left;
+    
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-section ul li i {
+    margin-right: 10px;
+    color: #f39c12;
+}
+
+.footer-section a {
+    color: #ddd;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section a:hover {
+    color: #f39c12;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+.social-links a:hover {
+    background: #f39c12;
+    transform: translateY(-3px);
+}
+.social-links img {
+    width: 40px; 
+    height: 40px;
+    object-fit: contain;
+}
+
+.newsletter input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 4px;
+}
+
+.newsletter button {
+    background: #f39c12;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.newsletter button:hover {
+    background: #e67e22;
+}
+
+.footer-bottom {
+    background: rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 50px;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.footer-bottom a {
+    color: #f39c12;
+}
+
+
+
+.logo {
+    display: flex; /* Робимо контейнер лого флекс-контейнером */
+    align-items: center; /* Вирівнюємо зображення по центру вертикально */
+}
+
+.logo img {
+
+    height: 100px;
+    transition: transform 0.2s ease;
+    
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-section h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    color: white;
+}
+
+.logo-section img {
+    height: 50px;
+    transition: transform 0.3s ease;
+}
+
+.logo-section img:hover {
+    transform: scale(1.1);
+}
+
+.logo img:hover {
+    transform: scale(1.1);
+}
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+nav a:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+nav .active {
+    font-weight: bold;
+    border-bottom: 2px solid #fff;
+}
+
+.content {
+    margin: 50px auto;
+    padding: 20px;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+    margin-top: 50px;
+    padding: 15px;
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    
+}
+
+.floating-buttons {
+    position: fixed;
+    bottom: 20px; /* Відстань від низу екрану */
+    right: 20px; /* Відстань від правого краю */
+    display: flex;
+    flex-direction: column; /* Робимо кнопки вертикальними */
+    gap: 10px; /* Відстань між кнопками */
+    z-index: 1000; /* Щоб кнопки були поверх інших елементів */
+}
+
+.floating-button {
+    background-color:rgb(62 100 106) ;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.floating-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.floating-timer-container {
+    position: fixed;
+    bottom: 140px;
+    right: 20px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.floating-timer {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgb(62 100 106);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.floating-timer:hover {
+    transform: scale(1.1);
+}
+
+.timer-expanded {
+    width: 200px;
+    height: 120px;
+    border-radius: 15px;
+    flex-direction: column;
+    padding: 15px;
+}
+
+.timer-display {
+    font-family: 'Courier New', monospace;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    display: none;
+}
+
+.timer-controls {
+    display: none;
+    gap: 5px;
+}
+
+.timer-expanded .timer-display,
+.timer-expanded .timer-controls {
+    display: flex;
+}
+
+.motivation-message {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    background-color: #f8f9fa;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 250px;
+    display: none;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Стилі для сторінки "Прогрес" */
+.progress-section {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.progress-charts {
+    display: flex;
+    justify-content: space-around;
+    margin: 40px 0;
+}
+
+.chart {
+    text-align: center;
+}
+
+@keyframes grow {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+.circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: conic-gradient(rgb(62 100 106) var(--percent), #e0e0e0 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    position: relative;
+    animation: grow 0.5s ease-out;
+}
+
+.circle::before {
+    content: '';
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: white;
+    z-index: 1;
+}
+
+.circle span {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    z-index: 2;
+}
+
+.achievements {
+    margin: 40px 0;
+}
+
+
+
+.achievements h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.achievements ul {
+    list-style: none;
+    padding: 0;
+}
+
+.achievements li {
+    background-color: #f4f4f4;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #555;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.achievements li:nth-child(1) { animation-delay: 0.2s; }
+.achievements li:nth-child(2) { animation-delay: 0.4s; }
+.achievements li:nth-child(3) { animation-delay: 0.6s; }
+
+.progress-history {
+    margin: 40px 0;
+}
+
+.progress-history h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.progress-history tr {
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: fadeInLeft 0.5s ease-out forwards;
+}
+
+@keyframes fadeInLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.progress-history tr:nth-child(1) { animation-delay: 0.2s; }
+.progress-history tr:nth-child(2) { animation-delay: 0.4s; }
+.progress-history tr:nth-child(3) { animation-delay: 0.6s; }
+
+
+.progress-history table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.progress-history th, .progress-history td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.progress-history th {
+    background-color: rgb(62 100 106);
+    color: white;
+}
+
+.progress-history tr:hover {
+    background-color: #f5f5f5;
+    transform: scale(1.02);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+h2, h3 {
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeInDown 0.5s ease-out forwards;
+}
+
+
+@keyframes fadeInDown {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h2 { animation-delay: 0.1s; }
+h3 { animation-delay: 0.3s; }
+
+/* Стилі для сторінки "Спільнота" */
+.community-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.post-form {
+    margin-bottom: 30px;
+}
+
+.post-form textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    resize: vertical;
+    margin-bottom: 10px;
+}
+
+.post-form button {
+    background-color: rgb(62 100 106);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.post-form button:hover {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+.posts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.post {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.post-content p {
+    margin: 0;
+    font-size: 1rem;
+    color: #333;
+}
+
+.post-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.post-actions button {
+    background-color: #f4f4f4;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.post-actions button:hover {
+    background-color: #e0e0e0;
+}
+
+.comments {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.comment {
+    margin-bottom: 10px;
+}
+
+.comment-author {
+    font-weight: bold;
+    color: #333;
+}
+
+.comment p {
+    margin: 5px 0 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+@media (max-width: 768px) {
+    .goals-grid {
+        grid-template-columns: 1fr; /* Один стовпець на малих екранах */
+    }
+
+    .goal-card {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .goal-content h3 {
+        font-size: 1.2rem;
+    }
+
+    .goal-content p {
+        font-size: 0.9rem;
+    }
+}
+
+.hero {
+    background: rgb(62 100 106);
+    color: white;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.btn-cta {
+    background-color: white;
+    color: rgb(62 100 106);
+    padding: 12px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-cta:hover {
+    background-color: #f0f0f0;
+    color: black;
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+.social-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #4CAF50;
+}
+
+.benefits {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.benefits h2 {
+    color: black;
+    font-size: 2rem;
+    margin-bottom: 40px;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.benefit-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.benefit-card span {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.benefit-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.benefit-card p {
+    font-size: 1rem;
+    color: #666;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.hero-content {
+    animation: float 3s ease-in-out infinite;
+}
+
+.benefit-card, .testimonial-card {
+    animation: fadeInUp 0.5s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 1024px) {
+    .goals-grid {
+        grid-template-columns: repeat(2, 1fr); /* Дві колонки замість трьох */
+    }
+
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr); /* Дві колонки замість трьох */
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr; /* Одна колонка */
+    }
+
+    .hero h2 {
+        font-size: 2rem; /* Зменшений розмір заголовка */
+    }
+
+    .hero p {
+        font-size: 1rem; /* Зменшений розмір тексту */
+    }
+
+    .header-content {
+        flex-direction: column; 
+        align-items: center;
+        text-align: center;
+    }
+
+    .header-actions {
+        margin-top: 10px; /* Відступ для кнопок */
+    }
+}
+
+@media (max-width: 768px) {
+    .goals-grid {
+        grid-template-columns: 1fr; 
+    }
+
+    .benefits-grid {
+        grid-template-columns: 1fr; 
+    }
+
+    .hero {
+        padding: 60px 20px; 
+    }
+    .header-content {
+        flex-direction: row;
+    }
+
+    .hero h2 {
+        font-size: 1.8rem;
+    }
+
+    .hero p {
+        font-size: 0.9rem; 
+    }
+
+    .btn-cta {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .header-actions {
+        gap: 10px;
+    }
+
+    .floating-buttons {
+        bottom: 10px; 
+        right: 10px;
+    }
+
+    .floating-button {
+        width: 40px; 
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .floating-timer-container {
+        right: 10px;
+        bottom: 110px;
+    }
+    .floating-timer {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .header-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+
+    .logo-section {
+        display: flex;
+        gap: 10px;
+        flex: 1 1 100%;
+        justify-content: flex-start;
+        margin-right: auto;
+    }
+
+    .burger {
+        display: flex;
+        margin-left: auto;
+        
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgb(62 100 106);
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        transition: max-height 0.4s ease, opacity 0.4s ease;
+        z-index: 1000;
+    }
+
+    .nav-menu.active {
+        max-height: 500px; /* достатньо велика, щоб вміст помістився */
+        opacity: 1;
+    }
+
+    .nav-menu ul {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 20px;
+    }
+
+    .header {
+        position: relative;
+        z-index: 999;
+    }
+    
+
+    .header-actions {
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .floating-buttons {
+        display: none; /* При потребі показати — змінити */
+    }
+    .btn-login {
+        display: none;
+    }
+    .btn-signup {
+        display: flex;
+        padding: 4px 10px;
+        font-size: 0.8rem;
+        margin-left: 40%;
+    }
+    .nav-menu ul li {
+        border-bottom: 1px solid white;
+        padding-bottom: 5px;
+    }
+
+    .nav-menu ul li:last-child {
+        border-bottom: none;
+    }
+    
+    
+    .logo-section h1 {
+        font-size: 1.3rem;
+    }
+    .logo-section img {
+        height: 40px;
+    }
+}
+    
+
+
+@media (max-width: 480px) {
+    .floating-button {
+        width: 40px; /* Зменшений розмір кнопок */
+        height: 40px;
+        font-size: 1.2rem; /* Зменшений розмір тексту/іконки */
+    }
+
+    .floating-buttons {
+        bottom: 10px; /* Зменшений відступ від низу */
+        right: 10px;
+        gap: 8px; /* Зменшена відстань між кнопками */
+    }
+    .hero h2 {
+        font-size: 1.5rem; /* Ще менший розмір заголовка */
+    }
+
+    .hero p {
+        font-size: 0.8rem; /* Ще менший розмір тексту */
+    }
+
+    .btn-cta {
+        padding: 8px 16px; /* Ще менший розмір кнопки */
+        font-size: 0.8rem;
+    }
+
+    .header h1 {
+        font-size: 1.2rem; /* Ще менший розмір заголовка */
+    }
+
+    .goal-card h3 {
+        font-size: 1.2rem; 
+    }
+
+    .goal-card p {
+        font-size: 0.9rem;
+    }
+
+    .benefit-card h3 {
+        font-size: 1.2rem; 
+    }
+
+    .benefit-card p {
+        font-size: 0.9rem;
+    }
+
+    .testimonial-card p {
+        font-size: 0.9rem; 
+    }
+
+    .testimonial-card span {
+        font-size: 0.8rem; 
+    }
+}
+
+/* Додаткові стилі для фільтрів та пошуку */
+.goals-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px auto;
+    max-width: 1200px;
+    padding: 0 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .filters {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .filters button {
+    padding: 8px 16px;
+    border: 1px solid rgb(62 100 106);
+    background: white;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .filters button.active {
+    background: rgb(62 100 106);
+    color: white;
+  }
+  
+  .filters button:hover {
+    background: rgba(62, 100, 106, 0.1);
+  }
+  
+  .search input {
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    min-width: 250px;
+  }
+  
+  /* Стилі для статусів цілей */
+  .goal-card.postponed {
+    opacity: 0.7;
+    background-color: #f5f5f5;
+  }
+  
+  .goal-card.postponed .goal-content h3,
+  .goal-card.postponed .goal-content p {
+    color: #888;
+  }
+  
+  .goal-card.completed {
+    background-color: #e8f5e9;
+    border: 2px solid #4CAF50;
+  }
+  
+  /* Стилі для редагування цілей */
+  .edit-input, .edit-textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .edit-textarea {
+    min-height: 80px;
+    resize: vertical;
+  }
+  
+  .goal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+  }
+  
+  .goal-actions button, .goal-actions select {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+  }
+  
+  .goal-actions select {
+    margin-left: auto;
+  }
+  
+  /* Прогрес бар */
+  .progress-bar {
+    height: 20px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    margin: 10px 0;
+    position: relative;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    border-radius: 10px;
+    background: rgb(62 100 106);
+    transition: width 0.3s ease;
+  }
+  
+  .progress-bar span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  /* Стилі для коментарів */
+  .comment-form {
+    margin-top: 15px;
+  }
+  
+  .comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    resize: vertical;
+    margin-bottom: 10px;
+  }
+  
+  .comment-form-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .comment-form-actions button {
+    padding: 5px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .comment-form-actions button:first-child {
+    background: rgb(62 100 106);
+    color: white;
+  }
+  
+  .comment-form-actions button:last-child {
+    background: #f5f5f5;
+  }
+  
+  .comments h4 {
+    margin: 15px 0 10px;
+    font-size: 16px;
+    color: #555;
+  }
+
+  .delete-btn {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .delete-btn:hover {
+    background-color: #ff5252;
+  }
+  
+  .delete-post-btn {
+    background: none;
+    border: none;
+    color: #ff6b6b;
+    font-size: 1.5rem;
+    cursor: pointer;
+    margin-left: auto;
+    padding: 0 5px;
+  }
+  
+  .delete-post-btn:hover {
+    color: #ff5252;
+  }
+
+
+  /* Форми авторизації */
+.auth-form {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .auth-form h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .auth-form button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: rgb(62 100 106);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .auth-form button:hover {
+    background-color: rgb(70 100 120);
+  }
+  
+  .error {
+    color: #f44336;
+    margin-bottom: 1rem;
+  }
+  
+  .auth-form p {
+    text-align: center;
+    margin-top: 1rem;
+  }
+  
+  .auth-form a {
+    color: #4CAF50;
+    text-decoration: none;
+  }
+  
+  .auth-form a:hover {
+    text-decoration: underline;
+  }
+
+  .btn-logout {
+    padding: 0.5rem 1rem;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .btn-logout:hover {
+    background-color: #d32f2f;
+  }
